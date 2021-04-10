@@ -11,7 +11,7 @@ export class UserController {
   }
 
   @Post()
-  async createComic(@Body() body) {
+  async createUser(@Body() body) {
     return await this.userService.createUser(body);
   }
 }
