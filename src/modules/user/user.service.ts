@@ -13,7 +13,11 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  async createUser(body) {
-    return await this.userRepository.save(body);
+  async createUser(data: any) {
+    return await this.userRepository.save(data);
+  }
+
+  async getUserByEmail(data: any){
+    return await this.userRepository.findOne(data)
   }
 }

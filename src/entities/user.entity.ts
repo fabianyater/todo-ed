@@ -20,7 +20,7 @@ export class User {
   user_email: String;
 
   @Column('character varying')
-  user_key_secret: String;
+  user_key_secret: string;
 
   @Column('int')
   user_state: isActive;
