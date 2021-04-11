@@ -83,9 +83,9 @@ export class UserController {
       const user = await this.userService.getUserByEmail({
         user_id: data['id'],
       });
-      console.log('Usuario: ', data['id']);
 
-      return user;
+      const { user_key_secret, ...result } = user;
+      return result;
     } catch (e) {
       throw new UnauthorizedException();
     }
