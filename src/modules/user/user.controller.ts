@@ -66,7 +66,7 @@ export class UserController {
 
     response.cookie('jwt', jwt, { httpOnly: true });
 
-    return { message: 'Success' };
+    return { message: 'Sesión iniciada' };
   }
 
   @Get('/user')
@@ -88,6 +88,14 @@ export class UserController {
       return result;
     } catch (e) {
       throw new UnauthorizedException();
+    }
+  }
+
+  @Post('logout')
+  async logout(@Res({ passthrough: true }) response: Response) {
+    response.clearCookie('jwt')
+    return{
+      message: 'Sesión cerrada'
     }
   }
 }
