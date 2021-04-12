@@ -31,6 +31,6 @@ export class User {
   @Column('timestamp')
   user_updated_at: Timestamp;
 
-  @OneToMany((type) => Tag, (tag) => tag.user)
+  @OneToMany(() => Tag, (tag) => tag.user)
   tag: Tag[];
 }

@@ -3,8 +3,11 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   Get,
+  Param,
   Post,
+  Put,
   Req,
   Res,
   UnauthorizedException,
@@ -93,9 +96,26 @@ export class UserController {
 
   @Post('logout')
   async logout(@Res({ passthrough: true }) response: Response) {
-    response.clearCookie('jwt')
-    return{
-      message: 'Sesión cerrada'
-    }
+    response.clearCookie('jwt');
+    return {
+      message: 'Sesión cerrada',
+    };
+  }
+
+  @Get('/id/:id')
+  async getUserById(@Param('id') id: Number) {
+    return await this.userService.getUserById(id);
+  }
+
+  @Put('/:id')
+  async updateUser(@Param('id') id: Number, @Body() body) {
+    console.log('Body update: ', body);
+
+    return await this.userService.updateUser(id, body);
+  }
+
+  @Delete('/:id')
+  async deleteUser(@Param('id') id: Number) {
+    return this.userService.deleteUser(id);
   }
 }

@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { TagModule } from './modules/tag/tag.module';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
@@ -20,6 +21,7 @@ import { UserModule } from './modules/user/user.module';
       ssl: { rejectUnauthorized: false },
     }),
     UserModule,
+    TagModule
   ],
   controllers: [AppController],
   providers: [AppService],

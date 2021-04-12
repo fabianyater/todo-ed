@@ -31,10 +31,10 @@ export class Tag {
   @Column('int')
   tag_state: isActive;
 
-  @ManyToOne((type) => User, (user) => user.tag)
+  @ManyToOne(() => User, (user) => user.tag)
   @JoinColumn({ name: 'fk_user' })
   user: User;
 
-  @OneToMany((type) => Tag_Task, (tag_task) => tag_task.tag)
+  @OneToMany(() => Tag_Task, (tag_task) => tag_task.tag)
   tag_task: Tag_Task[];
 }
